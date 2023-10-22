@@ -1,0 +1,350 @@
+@import "../../base.scss";
+
+.nav-bar {
+    height: 6.4rem;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    .left-side{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        .GridIcon{
+            display: flex;
+            @include mobile {
+                display: none;
+            }
+            .GridIcon1{
+                margin-right: 1rem;
+                position: relative;
+                svg{
+                    height: 1.8rem;
+                    width: 1.8rem;
+                    fill: black
+                }
+                svg:hover{
+                    fill: #C99400;
+                }
+            }
+            .GridIcon-logo{
+                svg{
+                    height: 1.6rem;
+                    width: 1.6rem;
+                    fill: rgb(117, 120, 123);
+                }
+                
+            }
+        }
+        .buy-crypto{
+            display: flex;
+            @include mobile{
+                display: none;
+            }
+            svg{
+                height: 1.6rem;
+                width: 1.6rem;
+                fill: rgb(117, 120, 123);
+            }
+            
+        }
+        .Markets{
+            display: flex;
+            @include mobile{
+                display: none;
+            }
+            svg{
+                height: 1.6rem;
+                width: 1.6rem;
+                fill: rgb(117, 120, 123);
+            }
+        }
+        .Trade{
+            display: flex;
+            @include mobile{
+                display: none;
+            }
+            svg{
+                height: 1.6rem;
+                width: 1.6rem;
+                fill: rgb(117, 120, 123);
+            }
+        }
+        .Derivatives{
+            display: flex;
+            @include mobile{
+                display: none;
+            }
+            svg{
+                height: 1.6rem;
+                width: 1.6rem;
+                fill: rgb(117, 120, 123);
+            }
+        }
+        .Earn{
+            display: flex;
+            @include mobile{
+                display: none;
+            }
+            svg{
+                height: 1.6rem;
+                width: 1.6rem;
+                fill:  rgb(117, 120, 123);
+            }
+        }
+        .Finance{
+            display: flex;
+            @include mobile{
+                display: none;
+            }
+            svg{
+                height: 1.6rem;
+                width: 1.6rem;
+                fill:  rgb(117, 120, 123);
+            }
+        }
+        .NFT{
+            display: flex;
+            @include mobile{
+                display: none;
+            }
+            svg{
+                height: 1.6rem;
+                width: 1.6rem;
+                fill:  rgb(117, 120, 123);
+            }
+        }
+        .Institutional{
+            display: flex;
+            @include mobile{
+                display: none;
+            }
+            svg{
+                height: 1.6rem;
+                width: 1.6rem;
+                fill: rgb(117, 120, 123);
+            }
+        }
+        .Feed{
+            display: flex;
+            @include mobile{
+                display: none;
+            }
+            svg{
+                height: 1.6rem;
+                width: 1.6rem;
+                fill: rgb(117, 120, 123);
+            }
+        }
+        svg{
+            width: 12rem;
+            height: 2.4rem;
+            fill:#F0B90B;
+        }
+        div.word{
+            font-size: 1.4rem;
+            font-weight: 400;
+            cursor: pointer;
+        }
+        div.word:hover{
+            color: #C99400;
+        }
+    }
+    //right side start 
+    .mobile-nav-toggle{
+        display: none;
+        @include mobile{
+            display: block;
+            position: fixed;
+            background-image: url(../../icons/SVG/menu.svg);
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: 0;
+            width: 3rem;
+            height: 3rem;
+            z-index: 1000;
+            top: 2rem;
+            right: 2rem;
+        }   
+    }
+    .mobile-nav-toggle[aria-expanded="true"] {
+        @include mobile{
+            background-image: url(../../icons/SVG/close.svg);
+            background-repeat: no-repeat;
+            border: 0;
+            background-color: transparent;
+        }
+
+    }
+    .right-side[data-visible="true"] {
+        @include mobile{
+            transform: translateX(0%);
+        }
+        
+    }
+    .right-side{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        @include mobile{
+            position: fixed;
+            inset: 0 ;
+            background: rgb(255, 255, 255);
+            flex-direction: column;
+            justify-content: flex-start;
+            transform: translateX(100%);
+            transition: transform 350ms ease-out;
+            z-index: 100;
+            
+        }
+        .log-in{
+            color: rgb(30, 35, 41);
+            font-weight: 400;
+            font-size: 1.4rem;
+            text-decoration: none;
+        }
+        .register{
+            color: rgb(24, 26, 32);
+            font-weight: 400;
+            font-size: 1.4rem;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            background-color: rgb(252, 213, 53);
+            border-radius: 4px;
+        }
+        .buy-crypto-right{
+            display: none;
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                .buy-crypto1-right{
+                    font-size: 2rem;
+                }
+            }
+        }
+        .Markets-right{
+            display: none;
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                .Markets1-right{
+                    font-size: 2rem;
+                }
+            }
+        }
+        .Trade-right{
+            display: none;
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                
+            }
+        }
+        .Derivatives-right{
+            display: none;
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                
+            }
+        }
+        .Earn-right{
+            display: none;
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                
+            } 
+        }
+        .Finance-right{
+            display: none;
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                
+            }  
+        }
+        .NFT-right{
+            display: none;
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                
+            } 
+        }
+        .Institutional-right{
+            display: none;
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                
+            }
+        }
+        .Feed-right{
+            display: none;
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+                
+            }
+        }
+        div{
+            color: rgb(30, 35, 41);
+            font-weight: 400;
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+        svg{
+            width: 1.6rem;
+            height: 1.6rem;
+            cursor: pointer;
+        }
+        div:hover{
+            color: #C99400;
+        }
+        svg:hover{
+            fill: #C99400;
+        }
+        .log-in:hover{
+            color: #C99400;
+        }
+        .register:hover{
+            background-color: #f8d87f;
+        }
+    }
+}
+.dropdown:hover{
+    opacity: 1;
+}
+
+.dropdown{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0.5rem);
+    opacity: 0;
+    .dropdown__links{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 1rem;
+        width: max-content;
+        border: 1px solid black;
+        .dropdown__link{
+            display: flex;
+            justify-content: space-between;
+            border-radius: 2px;
+            gap: 3rem;
+            margin: 1rem;
+            .dropdown__icon{
+                
+            }
+        }
+    }
+}
+
+
+// color when you hover background-color: #707A8A;

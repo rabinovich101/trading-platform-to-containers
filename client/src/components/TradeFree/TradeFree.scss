@@ -1,0 +1,98 @@
+@import "../../../mediaquery.scss";
+
+.trade-free-warper{
+    padding: 15rem;
+    border-radius: 4px;
+    @include mobile{
+        padding: 2rem;
+        margin-top: 4rem;
+    }
+    .trade-free{
+        border-radius: 16px;
+        background-color: rgb(255, 253, 230);
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        @include mobile{
+            flex-direction: column;
+            align-items: center;
+        }
+        .trade-free-img-warper{
+            padding: 4rem;
+            flex-basis: 40%;
+            img{
+                width: 32.5rem;
+                @include mobile{
+                    width: 24rem;
+                    height: auto;
+                }
+            }
+        }
+        .trade-free-description{
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: flex-start;
+            justify-content: center;
+            flex-basis: 60%;
+            @include mobile{
+                padding: 2rem;
+            }
+            .trade-free-description-title{
+                font-weight: 600;
+                font-size: 3.2rem;
+                line-height: 4rem;
+                @include mobile{
+                    font-size: 3.6rem;
+                }
+            }
+            .item-1{
+                text-decoration: none;
+                color: rgb(30, 35, 41);
+                font-weight: 400;
+                font-size: 1.6rem;
+                line-height: 24px;
+                display: flex;
+                @include mobile{
+                    font-size: 1.85rem;
+                }
+            }
+            .item-2{
+                text-decoration: none;
+                color: rgb(30, 35, 41);
+                font-weight: 400;
+                font-size: 1.85rem;
+                line-height: 24px;
+                display: flex;
+                
+            }
+            .item-3{
+                text-decoration: none;
+                color: rgb(30, 35, 41);
+                font-weight: 500;
+                font-size: 1.85rem;
+                background-color: rgb(252, 213, 53);
+                padding: 1.2rem 2.4rem;
+                border-radius: 6px;
+                text-align: center;
+                align-self: center;
+                @include mobile{
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    -webkit-box-pack: center;
+                    justify-content: center;
+                    box-sizing: border-box;
+                    font-size: 16px;
+                    text-align: center;
+                    outline: none;
+                    padding: 12px 24px;
+                    min-width: 100%;
+                }
+            }
+            .arrowrughtshort{
+                fill: rgb(118, 128, 143);
+            }
+        }
+    }
+}

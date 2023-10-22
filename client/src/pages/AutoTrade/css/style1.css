@@ -1,0 +1,41 @@
+.device-xl #slider .emphasis-title h1 {
+    font-size: 52px;
+  }
+
+  .device-lg #slider .emphasis-title h1 {
+    font-size: 44px;
+  }
+
+
+  .pricing-tenure-switcher {
+    position: relative;
+  }
+
+
+
+  .pricing-tenure-switcher .pts-left,
+  .pricing-tenure-switcher .pts-right,
+  .pricing-tenure-switcher .pts-switcher {
+    display: inline-block;
+    margin: 0 10px;
+    height: 30px;
+    overflow: hidden;
+  }
+
+  .pricing-tenure-switcher .pts-left,
+  .pricing-tenure-switcher .pts-right {
+    font-size: 16px;
+    font-weight: 600;
+    color: #AAA;
+    line-height: 30px;
+  }
+
+  .pricing-tenure-switcher .pts-switch-active {
+    color: #333;
+  }
+
+
+
+  .pricing-tenure-switcher .pts-switcher label {
+    margin-bottom: 0;
+  }

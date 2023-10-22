@@ -1,0 +1,249 @@
+@import "../../../mediaquery.scss";
+.withdraw{
+    display: flex;
+    
+    order: 2;
+    .withdraw_coin_warp{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 2rem;
+        .coin__type{
+            display: flex;
+            width: 100%;
+            align-items: flex-start;
+            color: rgb(30, 35, 41);
+            font-size: 1.4rem;
+            .coin__type__desc{
+                flex: 1;
+            }
+            .coin__type__action{
+                flex: 3;
+                .coin__type__action__currency{
+                    border: 1px solid rgb(221, 221, 221);
+                    border-radius: 4px;
+                    padding: 1em 1.8em;
+                    margin-top: 1rem;
+                    display: flex;
+                    gap: 2rem;
+                    align-items: center;
+                    width: 90%;
+                    img{
+                        width: 2.4rem;
+                        height: 2.4rem;
+                    }
+                    svg{
+                        margin-left: auto;
+                    }
+                    &:hover{
+                        border: 1px solid rgb(240, 185, 11);
+                    }
+                }
+            }
+        }
+        .coin__address{
+            display: flex;
+            .coin__address__desc{
+                color: rgb(30, 35, 41);
+                font-size: 1.4rem;
+                flex: 1;
+            }
+            .coin__address__action{
+                color: rgb(30, 35, 41);
+                font-size: 1.4rem;
+                flex: 3;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                .coin__address__action__address{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    .coin__address__action__address__desc{
+
+                    }
+                    .coin__address__input{
+                        border: 1px solid rgb(221, 221, 221);
+                        border-radius: 4px;
+                        padding: 1em 1.8em;
+                        width: 90%;
+                        &:hover, &:focus-visible{
+                            outline:none;
+                            border: 1px solid rgb(240, 185, 11);
+                        }
+                    }
+                    .not_valid:focus.not_valid:not(:placeholder-shown),
+                    .not_valid:not(:focus).not_valid:not(:placeholder-shown)
+                    {
+                        border: 1px solid red;
+                    }
+                    
+                    
+                }
+
+                .coin__address__action__network{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    .coin__address__action__network__desc{
+
+                    }
+                    .coin__address__action__network__type{
+                        border: 1px solid rgb(221, 221, 221);
+                        border-radius: 4px;
+                        padding: 1em 1.8em;
+                        width: 90%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        svg{
+
+                        }
+                        &:hover{
+                            outline:none;
+                            border: 1px solid rgb(240, 185, 11);
+                        }
+                    }
+                }
+                .coin__address__action__details{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 2.5rem;
+                    width: 60%;
+                    .coin__address__action__details_up{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                        .coin__address__action__details_balance{
+                            
+                        }
+                        .coin__address__action__details_withdrawal{
+
+                        }
+                    }
+                    .coin__address__action__details_down{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                        .coin__address__action__details_fee{
+
+                        }
+                        .coin__address__action__details_limit{
+
+                        }
+                    }
+                    
+                }
+            }
+        }
+        .coin__address__amount{
+            display: flex;
+            width: 100%;
+            color: rgb(30, 35, 41);
+            font-size: 1.4rem;
+            .coin__address__amount_desc{
+                flex: 1;
+            }
+            .coin__address__amount_action{
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                flex: 3;
+                position: relative;
+                .coin__address__amount_action_input{
+                    display: block;
+                    width: 90%;
+                    border: 1px solid rgb(221, 221, 221);
+                    border-radius: 4px;
+                    padding: 1em 2em;
+                    &:focus-visible{
+                        outline:none;
+                        border: 1px solid rgb(240, 185, 11);
+                    }
+                }
+                .coin__address__amount_feature{
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.25rem;
+                    gap: 1rem;
+                    color: rgb(112, 122, 138);
+                    position: absolute;
+                    top: 57%;
+                    right: 20%;
+                    div{
+                        cursor: pointer;
+                        &:hover{
+                            outline:none;
+                            color:  rgb(240, 185, 11);
+                        }
+                    }
+                }
+                
+            }
+        }
+        .coin__address__fee{
+            display: flex;
+            width: 100%;
+            color: rgb(30, 35, 41);
+            font-size: 1.4rem;
+            .coin__address__fee_desc{
+                flex: 1;
+            }
+            .coin__address__fee_action{
+                flex: 3;
+            }
+        }
+        .coin__address__submit{
+            display: flex;
+            width: 100%;
+            color: rgb(30, 35, 41);
+            font-size: 1.4rem;
+            .coin__address__submit_desc{
+                flex: 1;
+            }
+            .coin__address__submit_action{
+                flex: 3;
+                display: flex;
+                justify-content: space-between;
+                font-weight: 600;
+                font-size: 2.4rem;
+                .coin__address__submit_button{
+                    padding: 1em 2em;
+                    border-radius: 4px;
+                    background-color: rgb(240, 185, 11);
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: rgb(241, 204, 84); 
+                    }
+                }
+            }
+        }
+    }
+
+    .faq{
+        flex: 1;
+        @include mini-tablet-phone {
+            display: none;
+        }
+    }
+}
+
+.em_title{
+    color: rgb(112, 122, 138);
+    font-weight: 600;
+    inline-size: 150px;
+}
+
+.not_valid{
+    display: block;
+    width: 90%;
+    border: 1px solid red;
+    border-radius: 4px;
+    padding: 1em 2em;
+    &:focus-visible{
+        outline:none;
+        border: 1px solid red;
+    }
+}

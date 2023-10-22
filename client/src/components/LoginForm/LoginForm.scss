@@ -1,0 +1,92 @@
+@import "../../../mediaquery.scss";
+.form-warper{
+    display: flex; 
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 2rem;
+    h2{
+        font-size:  2.4rem;
+        align-self: center;
+        margin: 0 clamp(0rem, 11vw, 25rem);
+    }
+    form{
+        display: flex; 
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2rem;
+        margin: 0 clamp(0rem, 11vw, 25rem);
+        div{
+            display: flex; 
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+        }
+        .label-form{
+            font-size: 1.25rem;
+            position: absolute;
+            left: 1rem;
+            top: 0.8rem;
+            padding: 0 0.5rem;
+            cursor: text;
+            transition:  top 200ms ease-in , left 200ms ease-in, font-size 200ms ease-in;
+            background-color: white;
+        }
+        .input-form{
+            height: 4rem;
+            padding: 0.2rem;
+            width: 100%;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.4rem;
+            border: 1.6px solid rgb(31, 30, 30);
+            color: rgb(102, 101, 101);
+            text-align: center;
+            &::placeholder{
+                color: rgb(178, 176, 176);
+            }
+        }
+        .input-form:focus-visible ~ .label-form, 
+        .input-form:not(:placeholder-shown).input-form:not(:focus-visible)  ~ .label-form{
+            top: -0.5rem;
+            font-size: 1rem;
+            left: 0.8rem;
+        }
+        .input-form:focus-visible{
+            border: 3px solid rgb(247, 4, 130);
+            outline: none; 
+            transition: border 0.15s ease-in;
+        }
+        button{
+            background-color: #F0B90B;
+            border: none;
+            padding: 1em 2em;
+            border-radius: 4px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        .button_desc{
+            display: none;
+            @include mini-tablet-phone{
+                display: block;
+                margin-top: 3.5rem;
+                font-size: 1.4rem;
+            }
+        }
+        .open_button{
+            display: none;
+            @include mini-tablet-phone{
+                display: inline-block;
+                padding: 1em 2em;
+                text-decoration: none;
+                background-color:rgb(19,24,53);
+                border-radius: 4px;
+                font-size: 1.4rem;
+                font-weight: 600;
+                text-align: center;
+                color: white;
+                align-self: flex-start;
+            }
+        }
+    }
+}

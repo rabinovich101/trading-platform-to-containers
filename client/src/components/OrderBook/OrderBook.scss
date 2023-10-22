@@ -1,0 +1,13 @@
+@import "../../../mediaquery.scss";
+
+.orderbook {
+    color: white;
+    background-color: rgb(23,27,38);
+    display: flex;
+    gap: 3.5rem;
+    padding: 0.3rem;
+    height: max(20vh, 300px);
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+    flex: 0.65;
+}

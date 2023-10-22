@@ -1,0 +1,13 @@
+@import "../../../mediaquery.scss";
+.header{
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+    align-items: center;
+    padding-top: 8rem;
+    background-image: url(../../img/web-background-image.png);
+    @include mobile{
+        padding-top: 2rem;
+        
+    }
+}

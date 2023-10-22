@@ -1,0 +1,78 @@
+@import "../../base.scss";
+@import "../../../mediaquery.scss";
+.nav-warp{
+    .nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.3rem;
+        background-color: rgb(23,27,38);
+        .logo{
+            width: 12rem;
+            height: 2.4rem;
+            fill:#F0B90B;
+            cursor: pointer;
+        }
+    }
+}
+.menu{
+    display: flex;
+    gap: 2rem;
+}
+li{
+    list-style: none;
+}
+
+li > a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1.6rem;
+}
+.submenu {
+    position: absolute;
+    left: 0;
+    background-color: var(--dark);
+    white-space: nowrap;
+    padding: 1.5em 0;
+    min-width: 16em;
+  
+    /* hide submenus */
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+
+  .submenu > li > a {
+    padding: 0.8em 1.5em;
+  }
+  .submenu .submenu {
+    left: -100%;
+    top: 0;
+  }
+  .submenu .submenu .submenu {
+    left: -100%;
+    top: 0;
+  }
+  
+  .main-navigation-left > li:hover > a,
+  .submenu > li:hover > a {
+    background-color: hsla(0, 0%, 100%, 0.05);
+    color: var(--hover-color);
+  }
+  .main-navigation-left > li:hover > a {
+    background-color: hsla(0, 0%, 0%, 0.95);
+  }
+
+    /* Reveal  */
+    .main-navigation-left > li:hover > a + .submenu,
+    .submenu > li:hover > a + .submenu {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+    
+    /* ANIMATE aRROWS */
+    .main-navigation-left > li:hover > a > .arrow,
+    .submenu > li:hover > a > .arrow {
+      transform: rotate(225deg);
+    }

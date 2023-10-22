@@ -1,0 +1,87 @@
+version: '3'
+services:
+  client:
+    container_name: client
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    restart: always
+    environment:
+      - WDS_SOCKET_PORT=0
+  api:
+    container_name: api
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    restart: always
+    environment:
+      - APIKEY=8P26F3J5A74DDJ24
+      - SECRET_TOKEN=DFFDJCKDNKJD54545SD#
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=trading_platform
+      - MYSQL_PASSWORD=Xx123456
+      - WALLET_PHRASE=Gascbwd03A&*7823*&&!(*()*)(&*)(jwsjnkhdekdhejhd
+      - MEMONIC=stumble castle below paddle worth borrow inhale kick option desert sample decorate
+      - BLOCKCHAIR_KEY=A___FsYEEz0ZDQ64boro8fFUYllGitBt
+      - PORT=3003
+      - LOCALHOST_3010=http://localhost:3010
+  db:
+    container_name: mysql
+    image: mysql:8.0
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=Xx123456
+      - MYSQL_DATABASE=trading_platform
+      - MYSQL_PASSWORD=Xx123456
+    volumes:
+      - ./tables.sql:/docker-entrypoint-initdb.d/0_init.sql
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  nginx:
+    container_name: nginx
+    depends_on:
+      - api
+      - client
+      - orderbook
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3050:80"
+  orderbook:
+    container_name: orderbook
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./orderBook
+    volumes:
+      - /app/node_modules
+      - ./orderBook:/app
+    expose:
+      - 3010
+      - 3004
+    restart: always
+  # jsonserver:
+  #   container_name: json_server
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: ./jsonServer
+  #   restart: always
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./jsonServer:/app
+  #   expose:
+  #     - 3004
+    

@@ -1,0 +1,21 @@
+@import "../../base.scss";
+@import "../../../mediaquery.scss";
+
+.trading-page{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    
+    .trading-page_info{
+        display: flex;
+        justify-content: space-between;
+        gap: 0.8rem;
+        margin: 0 0.8rem;
+    }
+    .trading-page-results{
+        display: flex;
+        margin: 0 0.8rem;
+        gap: 0.8rem;
+    }
+}

@@ -1,0 +1,236 @@
+@import "../../../mediaquery.scss";
+
+.crypto-portfolio-warper{
+    @include mobile{
+            
+    }
+    .crypto-portfolio{
+        display: flex;
+        justify-content: flex-start;
+        gap: 5rem;
+        margin-inline: 15rem;
+        @include mobile{
+            margin: 2.5rem;
+        }
+        .crypto-portfolio-left{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 7.43rem;
+            @include mobile{
+            
+            }
+            .crypto-portfolio-left-header{
+                @include mobile{
+            
+                }
+                .crypto-portfolio-left-header-title{
+                    font-weight: 600;
+                    font-size: 4rem;
+                    line-height: 4.8rem;
+                    @include mobile{
+                        font-size: 3rem;
+                        line-height: 4rem;
+                    }
+                }
+                .crypto-portfolio-left-header-description{
+                    font-weight: 400;
+                    font-size: 1.7rem;
+                    line-height: 2.8rem;
+                    margin-top: 1.6rem;
+                    @include mobile{
+            
+                    }
+                }
+            }
+            .phone-img-mobile{
+                display: none;
+                @include mobile{
+                    display: flex;
+                    align-self: center;
+                    img{
+                        @include mobile {
+                            width: 190px;
+                            display: flex;
+                            
+                        }
+                    }
+                }
+            }
+            .verfiy-identy{
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                @include mobile{
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                svg{
+                    width: 8rem;
+                    height: 8rem;
+                    flex-shrink: 1;
+                    @include mobile{
+                        width: 48px;
+                        height: 48px;
+                    }
+                }
+                .verfiy-identy-text{
+                    flex-shrink: 1;
+                    flex-basis: 65%;
+                    word-break: break-word;
+                    @include mobile{
+            
+                    }
+                    .verfiy-identy-text-title{
+                        font-weight: 600;
+                        font-size: 2.4rem;
+                        line-height: 3.2rem;
+                        @include mobile{
+            
+                        }
+                    }
+                    .verfiy-identy-text-desc{
+                        font-weight: 400;
+                        font-size: 1.6rem;
+                        line-height: 2.4rem;
+                        @include mobile{
+            
+                        }
+                    }
+                }
+            }
+            .fund-account{
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                @include mobile{
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                svg{
+                    width: 8rem;
+                    height: 8rem;
+                    flex-shrink: 1;
+                    @include mobile{
+            
+                    }
+                }
+                .fund-account-text{
+                    flex-shrink: 1;
+                    flex-basis: 65%;
+                    word-break: break-word;
+                    @include mobile{
+            
+                    }
+                    svg{
+                        width: 8rem;
+                        height: 8rem;
+                        @include mobile{
+                            width: 48px;
+                            height: 48px;
+                        }
+                    }
+                    .fund-account-text-title{
+                        font-weight: 600;
+                        font-size: 2.4rem;
+                        line-height: 3.2rem;
+                        @include mobile{
+            
+                        }
+                    }
+                    .fund-account-text-desc{
+                        font-weight: 400;
+                        font-size: 1.6rem;
+                        line-height: 2.4rem;
+                        @include mobile{
+            
+                        }
+                    }
+                }
+            }
+            .start-trading{
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                @include mobile{
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                svg{
+                    width: 8rem;
+                    height: 8rem;
+                    flex-shrink: 1;
+                    @include mobile{
+                        width: 48px;
+                        height: 48px;
+                    }
+                }
+                .start-trading-text{
+                    flex-shrink: 1;
+                    flex-basis: 65%;
+                    word-break: break-word;
+                    @include mobile{
+            
+                    }
+                    svg{
+                        width: 8rem;
+                        height: 8rem;
+                        @include mobile{
+                            width: 48px;
+                            height: 48px;
+                        }
+                    }
+                    .start-trading-text-title{
+                        font-weight: 600;
+                        font-size: 2.4rem;
+                        line-height: 3.2rem;
+                        @include mobile{
+            
+                        }
+                    }
+                    .start-trading-text-desc{
+                        font-weight: 400;
+                        font-size: 1.6rem;
+                        line-height: 2.4rem;
+                        @include mobile{
+            
+                        }
+                    }
+                }
+            }
+            .button{
+                text-decoration: none;
+                background-color: #FCD535;
+                color: #181A20;
+                border-radius: 4px;
+                min-height: 24px;
+                min-width: 200px;
+                font-size: 1.6rem;
+                font-weight: 500;
+                padding-bottom: 1.2rem;
+                padding-top: 1.2rem;
+                text-align: center;
+                @include mobile{
+                    display: inline-flex;
+                    min-width: 100%;
+                    justify-content: center;
+                    font-size: 16px;
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    line-height: 24px;
+                }
+            }
+        }
+        .crypto-portfolio-right{
+            @include mobile{
+                display: none;
+            }
+            img{
+                width: 33.5rem;
+                @include mobile{
+            
+                }
+            }
+        }
+    }
+}

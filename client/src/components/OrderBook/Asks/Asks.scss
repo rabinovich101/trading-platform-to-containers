@@ -1,0 +1,31 @@
+@import "../../../../mediaquery.scss";
+.orderbook-sell{
+    padding: 0.5rem;
+    cursor: pointer;
+    .asks-table{
+        border-collapse: collapse;
+        text-align: center;
+        .asks-table-head{
+       
+            .asks-table-head-tr{
+                
+                .asks-table-head-tr-th{
+                    cursor: pointer;
+                    color: red;
+                    font-size: 1.4rem;
+                    padding-inline: 1rem;
+                }
+            }
+        }
+        .asks-table-body{
+            .asks-table-body-tr{
+                
+                .asks-table-body-tr-td{
+                    cursor: pointer;
+                    padding: 0.8rem;
+                    font-size: 1.35rem;
+                }
+            }
+        }
+    }
+}

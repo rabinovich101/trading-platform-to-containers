@@ -1,0 +1,45 @@
+@import "../../../base.scss";
+.active-orders{
+    div.unstyledTable {
+        width: 85%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .divTable.unstyledTable .divTableCell, .divTable.unstyledTable .divTableHead {
+        font-size: 1.25rem;
+        padding: 0.35rem;
+        
+    }
+    .divTable.unstyledTable .divTableHeading {
+       
+    }
+    .divTable.unstyledTable .divTableHeading .divTableHead {
+      font-weight: normal;
+      font-size: 1.5rem;
+      
+    }
+    /* DivTable.com */
+    .divTable{ display: table; }
+    .divTableRow { display: table-row;}
+    .divTableHeading { display: table-header-group;}
+    .divTableCell, .divTableHead { display: table-cell;}
+    .divTableHeading { display: table-header-group;}
+    .divTableBody { display: table-row-group;}
+
+    .cancel-order-button{
+        padding: 0.65rem 1.25rem;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: rgb(240, 185, 11);
+        outline: none;
+        border: none;
+    }
+    .cancel-order-button:hover{
+        background-color: rgb(207, 173, 62);
+    }
+    .cancel-order-button:focus{
+        background-color: rgb(240, 185, 11);
+        transform: scale(1.05);
+    }
+
+}

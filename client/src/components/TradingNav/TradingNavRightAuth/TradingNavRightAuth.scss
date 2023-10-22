@@ -1,0 +1,41 @@
+@import "../../../base.scss";
+@import "../../../../mediaquery.scss";
+    //right side
+    .main-navigation-right{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.65rem;
+        cursor: pointer;
+        li{
+            color: white;
+            font-size: 1.4rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            svg{
+                fill: #F0B90B;
+                width: 2rem;
+                height: 2rem;
+            }
+            div{
+                margin-left: 0.5rem;
+                
+            }
+            a{
+                margin-left: 0.5rem;
+                text-decoration: none;
+                color: white;
+            }
+            .link-user{
+                color: white;
+                text-decoration: none;
+                font-size: 1.4rem;
+                margin-left: 0.5rem;
+            }
+            img{
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }

@@ -1,0 +1,32 @@
+@import "../../../../mediaquery.scss";
+
+.orderbook-buy{
+    font-size: 1.6rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    .bids-table{
+        border-collapse: collapse;
+        text-align: center;
+        .bids-table-head{
+            .bids-table-head-tr{
+                .bids-table-head-tr-th{
+                    cursor: pointer;
+                    color: green;
+                    font-size: 1.4rem;
+                    padding-inline: 1rem;
+                }
+            }
+        }
+        .bids-table-body{
+            .bids-table-body-tr{
+                
+                .bids-table-body-tr-td{
+                    cursor: pointer;
+                    padding: 0.8rem;
+                    font-size: 1.35rem;
+                   
+                }
+            }
+        }
+    }
+}

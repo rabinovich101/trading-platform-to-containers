@@ -1,0 +1,44 @@
+@import "../../../mediaquery.scss";
+.news{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    .news-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center center;
+        margin: 4.5rem 9rem;
+        border-radius: 1.6rem;
+        @include mobile{
+            margin: 6rem 0;
+            flex-grow: 0;
+            width: 100%;
+            height: 120%;
+            padding: 1rem;
+        }
+        img.cristiano-desktop{
+            border-radius: 1.6rem;
+            @include mobile{
+                display: none;
+                
+            }
+        }
+        img.cristiano-mobile{
+            display: none;
+            @include mobile{
+                display: flex;
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                
+            }
+        }
+        }
+    }

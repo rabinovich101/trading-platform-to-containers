@@ -1,0 +1,38 @@
+@import "../../../mediaquery.scss";
+.marketing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    color: rgb(30, 35, 41);
+    background-color: rgb(254, 246, 216);
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    @include mobile {
+        display: none;
+    }
+    cursor: pointer;
+    max-height: 4rem;
+    .main-link{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.4rem;
+        text-decoration: none;
+        .presentbinance {
+            height: 2rem;
+            width: 2rem;
+            color: #F0B90B;
+        }
+        .arrow-right{
+            height: 1.6rem;
+            width: 1.9rem;
+            fill: rgb(71, 77, 87);
+        }
+        .marketing-text{
+            font-size: 1.4rem;
+            color: rgb(71, 77, 87);
+        }
+    }
+}

@@ -1,0 +1,146 @@
+@import "../../../../mediaquery.scss";
+
+.market-trading-controller-buy{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    .market-trading-controller-buy-balance{
+        align-self: flex-start;
+        margin-left: max(2rem);
+        font-size: 1.2rem;
+    }
+    .market-trading-controller-buy-price {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        input{
+            width:90%;
+            padding: 6px 12px;
+            border-radius: 3px;
+            text-align: center;
+            border: none;
+            color: black;
+        }
+        input:focus,
+        input:active,
+        input:hover{
+            outline:2px solid #F0B90B;
+        }
+    }
+    .market-trading-controller-buy-amount{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        input{
+            width:90%;
+            padding: 6px 12px;
+            border-radius: 3px;
+            text-align: center;
+            border: none;
+            color: black;
+        }
+        input:focus,
+        input:active,
+        input:hover{
+            outline:2px solid #F0B90B;
+        }
+    }
+    
+    button{
+        padding: 10px 12px;
+        width:90%;
+        border-radius: 4px;
+        background-color: rgb(14, 203, 129);
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+    }
+}
+.market-trading-controller-sell{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    .market-trading-controller-sell-balance{
+        align-self: flex-start;
+        margin-left: max(2rem);
+        font-size: 1.2rem;
+    }
+    .market-trading-controller-sell-price{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        input:focus,
+        input:active,
+        input:hover{
+            outline:2px solid #F0B90B;
+        }
+    }
+    .market-trading-controller-sell-amount{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        input:focus,
+        input:active,
+        input:hover{
+            outline:2px solid #F0B90B;
+        }
+    }
+    
+    button{
+        padding: 10px 12px;
+        width:90%;
+        border-radius: 4px;
+        background-color: rgb(246, 70, 93);
+        font-weight: 600;
+        color: white;
+        cursor: pointer;
+        border: none;
+    }
+}
+
+
+div > .marketcamp-input {
+    width:90%;
+    padding: 6px 12px;
+    border-radius:3px;
+    text-align: center;
+    border: none;
+    color: black;
+}
+div > .marketcamp-label{
+    position: absolute;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 400;
+    left: 3rem;
+    top: 0.5rem;
+}
+div > .marketcamp-span {
+    position: absolute;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 400;
+    right: 4.9rem;
+    top: 0.5rem;
+}
+
+form > .slider-steps {
+    width:88%;
+    color: #F0B90B;
+    background-color: #F0B90B;
+    padding: 0.1rem;
+    height: 1px;
+}

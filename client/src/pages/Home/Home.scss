@@ -1,0 +1,10 @@
+@import "../../base.scss";
+@import "../../../mediaquery.scss";
+.my-container{
+    max-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+

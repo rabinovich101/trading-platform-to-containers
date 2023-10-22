@@ -1,0 +1,83 @@
+@import "../../../../mediaquery.scss";
+.bitcoin-deposite{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.6rem;
+    .bitcoin-deposite-title{
+        font-size: 2.5rem;
+    }
+    .bitcoin-deposite-steps{
+        font-size: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+    }
+    .bitcoin-deposite-coin{
+        font-size: 1.4rem;
+    }
+    .coin-field{
+        display: flex;
+        width: 20%;
+        gap: 5rem;
+        justify-content: center;
+        .coin{
+            font-size: 2.5rem;
+            font-weight: 600;
+            flex: 0.15;
+        }
+        .coin-type{
+            border: 0.5px solid black;
+            flex: 0.8;
+            font-size: 2.5rem;
+            font-weight: 600;
+            align-self: center;
+            text-align: center;
+            border-radius: 4px;
+        }
+    }
+    .network-field{
+        display: flex;
+        width: 20%;
+        gap: 5rem;
+        justify-content: center;
+        .network-name{
+            font-size: 2.5rem;
+            font-weight: 600;
+            flex: 0.15;
+        }
+        .network-select{
+            border: 1px solid black;
+            flex: 0.8;
+            font-size: 2.5rem;
+            font-weight: 400;
+            align-self: center;
+            text-align: center;
+            border-radius: 4px;
+        }
+    }
+    .address-field{
+        display: flex;
+        flex-direction: column;
+        font-size: 1.8rem;
+        .address{
+            
+        }
+        .address-value{
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            button{
+                cursor: pointer;
+                
+                svg{
+                    width: 2.5rem;
+                    height: 2rem;
+                    border-radius: 4px;
+                }
+            }
+        }
+        
+    }
+}

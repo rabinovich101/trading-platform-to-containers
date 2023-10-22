@@ -1,0 +1,30 @@
+@import "../../../base.scss";
+
+.history-orders{
+    div.unstyledTable {
+        width: 85%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .divTable.unstyledTable .divTableCell, .divTable.unstyledTable .divTableHead {
+        font-size: 1.25rem;
+        padding: 0.35rem;
+        
+    }
+    .divTable.unstyledTable .divTableHeading {
+       
+    }
+    .divTable.unstyledTable .divTableHeading .divTableHead {
+      font-weight: normal;
+      font-size: 1.5rem;
+      
+    }
+    /* DivTable.com */
+    .divTable{ display: table; }
+    .divTableRow { display: table-row;}
+    .divTableHeading { display: table-header-group;}
+    .divTableCell, .divTableHead { display: table-cell;}
+    .divTableHeading { display: table-header-group;}
+    .divTableBody { display: table-row-group;}
+
+}

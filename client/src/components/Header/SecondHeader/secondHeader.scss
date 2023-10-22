@@ -1,0 +1,159 @@
+@import "../../../../mediaquery.scss";
+.secondheader{
+    display:flex ;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 130rem;
+    flex-grow: 1;
+    gap: 15rem;
+    padding: 8rem 0;
+    flex-wrap: wrap;
+    @include mobile{
+        max-width: 100%;
+        gap: 6rem;
+        padding: 2rem 0;
+        //padding: 4rem 0;
+        justify-content: center;
+        margin: 0.5rem 2rem;
+        -webkit-box-pack: justify;
+        flex-shrink: 0;
+        //margin-left: -8px;
+
+    }
+    .billion76{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+        
+        @include mobile {
+            flex: 1;
+            align-items: flex-start;
+            gap: 0.2rem;
+            padding: 1rem 0.5rem;
+            flex-basis: 30%;
+        }
+    .billion76-title{
+        font-weight: 600;
+        font-size: 4rem;
+        line-height: 4.8rem;
+        @include mobile{
+            font-weight: 600;
+            font-size: 2.4rem;
+            line-height: 3.2rem;
+
+        }
+        
+    }
+    .billion76-description{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        @include mobile{
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 16px;
+        }
+    }
+    }
+    .currencies350{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        @include mobile {
+            flex: 1;
+            gap: 0.2rem;
+            align-items: flex-start;
+            padding: 1rem 0.5rem;
+            flex-basis: 30%;
+        }
+        .currencies350-title{
+            font-weight: 600;
+            font-size: 2.4rem;
+            line-height: 3.2rem;
+            @include mobile{
+                font-weight: 600;
+                font-size: 2.4rem;
+                line-height: 2.4rem;
+            }
+        }
+       .currencies350-description{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        @include mobile{
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 16px;
+        }
+       }
+    }
+     .million120{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        @include mobile {
+            flex: 1;
+            gap: 0.2rem;
+            align-items: flex-start;
+            padding: 1rem 0.5rem;
+            flex-basis: 30%;
+        }
+         .million120-title{
+            font-weight: 600;
+            font-size: 2.4rem;
+            line-height: 3.2rem;
+            @include mobile{
+                font-weight: 600;
+                font-size: 2.4rem;
+                line-height: 3.2rem;
+            }
+         }
+         .million120-description{
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            @include mobile{
+                font-weight: 400;
+                font-size: 11px;
+                line-height: 16px;
+            }
+         }
+     }
+     .ten-pracent{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        @include mobile {
+            flex: 1;
+            gap: 0.2rem;
+            align-items: flex-start;
+            padding: 1rem 0.5rem;
+            flex-basis: 30%;
+        }
+         .ten-pracent-title{
+            font-weight: 600;
+            font-size: 2.4rem;
+            line-height: 3.2rem;
+            @include mobile{
+                font-weight: 600;
+                font-size: 2.4rem;
+                line-height: 3.2rem;
+            }
+         }
+         .ten-pracent-description{
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            @include mobile{
+                font-weight: 400;
+                font-size: 11px;
+                line-height: 16px;
+            }
+         }
+     }
+}

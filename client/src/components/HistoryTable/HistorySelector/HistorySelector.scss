@@ -1,0 +1,13 @@
+@import "../../../../mediaquery.scss";
+.history_selector_feature{
+    display: flex;
+    justify-content: space-evenly;
+    .history_selector_feature_item{
+        display: flex;
+        flex-direction: column;
+        h3{
+            font-size: 1.35rem;
+            font-weight: 400;
+        }
+    }
+}

@@ -1,0 +1,213 @@
+@import "../../../../mediaquery.scss";
+.first-header{
+    display: flex;
+    max-width: 130rem;
+    align-self: center;
+    .right-header{
+        display: flex;
+        flex: 1;
+        @include mobile{
+            display: none;
+        }
+        .nft-img{
+            display: flex;
+            justify-content: flex-end;
+            img{
+                width: 83%;
+                object-fit: cover;
+            }
+        }    
+    }
+    .left-header{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 2rem;
+        @include mobile {
+            
+        }
+        .first-h1{
+            font-weight: 600;
+            color: #1E2329;
+            font-size: 4rem;
+            line-height: 4.8rem;
+            margin-right: 10.6rem;
+            @include mobile {
+                font-size: 3.2rem;
+                margin: 0;
+                padding: 0 2rem;
+                line-height: 4rem;
+            }
+        }
+        .header-login-sign{
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            @include mobile {
+                flex-grow: 1;
+                
+            }
+            .marketing-small{
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                @include mobile {
+                    margin: 0 2rem;
+                }
+                .presentbinance{
+                    width: 2.8rem;
+                    height: 2.7rem;
+                    color: #F0B90B;
+                }
+                .text-marketing{
+                    color: #1E2329;
+                    font-size: 2rem;
+                    @include mobile{
+                        font-size: 1.6rem;
+                    }
+                }
+                .arrowrughtshort{
+                    width: 2rem;
+                    height: 2rem;
+                    fill: rgb(146, 154, 165);
+                }
+            }
+            .signup-login{
+                @include mobile {
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-grow: 1;
+                }
+                .signup-login-link{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    user-select: none;
+                    cursor: pointer;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-decoration: none;
+                    font-size: 1.6rem;
+                    font-weight: 500;
+                    text-align: center;
+                    background-color: #FCD535;
+                    width: 56%;
+                    border-radius: 4px;
+                    word-break: keep-all;
+                    outline: none;
+                    padding-left: 24px;
+                    padding-right: 24px;
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    line-height: 24px;
+                    @include mobile {
+                        flex-grow: 1;
+                        margin: 0 2rem;
+                    }
+                    .human-icon{
+                        @include mobile{
+                            width: 2rem;
+                            height: 2rem;
+                        }
+                    }
+                    .signup-login-text{
+                        color: #181A20;
+                        @include mobile{
+                            font-size: 1.9rem;
+                        }
+                    }
+                }
+                .signup-login-link:hover{
+                    background-color: #f8d87f;
+                }
+                
+            }
+            .hr-element{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 0.8rem;
+                @include mobile {
+                    justify-content: center;
+                }
+                .hr-element-first{
+                    height: 1px;
+                    width: 17.5%;
+                    background-color: #EAECEF;
+                }
+                .hr-element-text{
+                    font-weight: 500;
+                    font-size: 1.6rem;
+                    line-height: 2.4rem;
+
+                }
+                .hr-element-second{
+                    height: 1px;
+                    width: 17.5%;
+                    background-color: #EAECEF;
+                }
+            }
+            .signup-buttons{
+                display: flex;
+                gap: 3rem;
+                @include mobile {
+                    justify-content: space-between;
+                    gap: 3rem;
+                    margin: 0 2rem;
+                }
+                .google-button{
+                    display: flex;
+                    justify-content: center;
+                    gap: 1rem;
+                    text-decoration: none;
+                    padding: 2.4rem 4.8rem;
+                    height: 4.8rem;
+                    background-color: #EAECEF;
+                    justify-content: center;
+                    border-radius: 4px;
+                    align-items: center;
+                    @include mobile{
+                        padding: 2.6rem 5.75rem;
+                    }
+                    img{
+                        width: 1.6rem;
+                        height: 1.6rem;
+                    }
+                    .google-text{
+                        color: #1E2329;
+                        font-size: 1.6rem;
+                        font-weight: 500;
+                        line-height: 24px;
+                    }
+                }
+                .apple-button{
+                    display: flex;
+                    gap: 1rem;
+                    text-decoration: none;
+                    height: 4.8rem;
+                    background-color: #EAECEF;
+                    justify-content: center;
+                    border-radius: 4px;
+                    padding: 2.4rem 4.8rem;
+                    align-items: center;
+                    @include mobile{
+                        padding: 2.6rem 5.75rem;
+                    }
+                    svg{
+                        width: 1.6rem;
+                        height: 1.6rem;
+                    }
+                    .apple-text{
+                        color: #1E2329;
+                        font-size: 1.6rem;
+                        font-weight: 500;
+                        line-height: 24px;
+                    }
+                }
+            }
+        }      
+    }
+}
