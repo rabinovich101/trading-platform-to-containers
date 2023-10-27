@@ -1,13 +1,14 @@
 import "./LtcCoin.scss";
+import AuthContext from "../../../context/authContext";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { useState,useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { useGetAnyAddressQuery} from "../../../store";
 import { QRCodeSVG } from 'qrcode.react';
 
 
-function LtcCoin({ currency , token}) {
-
+function LtcCoin({currency}) {
+    const {token, auth} = useContext(AuthContext); 
     const [copy, setCopy] = useState({ value: "", copied: false });
     const [obj, setObj] = useState({ token, currency, network: "BTC" });
   

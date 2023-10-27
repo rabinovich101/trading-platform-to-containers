@@ -44,7 +44,7 @@ const usersApi = createApi({
                         method: "POST"
                     }
                 },
-                invalidatesTags: (result, error, arg) => result.created ? [{type: 'Users'}] && window.location.replace(`${REACT_APP_LOCAL_3000}/login`) :[{type: 'Users'}],
+                invalidatesTags: (result, error, arg) => result.created ? [{type: 'Users'}] && window.location.replace(`/login`) :[{type: 'Users'}],
             })
          }
     },

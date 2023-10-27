@@ -1,5 +1,6 @@
 
-import { useMemo, useContext, useEffect} from "react";
+import { useMemo, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useTable, useSortBy, useGlobalFilter , useFilters } from "react-table";
 import "./AssetsTable.scss";
 import GlobalFiler from "../../hooks/GlobalFilter";
@@ -36,8 +37,8 @@ function AssetsTable() {
                 accessor: '',
                 Cell: ({ row }) => (
                   <div>
-                    <a className="assets-table-depoite" href={`/deposite/${row.values.coin}`}>Deposite</a>
-                    <a className="assets-table-withdraw" href={`/withdraw/${row.values.coin}`}>Withdraw</a>
+                    <Link className="assets-table-depoite" to={`/deposite?coin=${row.values.coin}`}>Deposite</Link>
+                    <Link className="assets-table-withdraw" to={`/withdraw/${row.values.coin}`}>Withdraw</Link>
                   </div>
               )
             },

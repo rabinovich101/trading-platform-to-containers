@@ -12,7 +12,7 @@ import DepositePage from "./pages/DepositePage/DepositePage";
 import WithdrawPage from "./pages/WithdrawPage/WithdrawPage";
 
 const App = () => {
-  const { auth } = useContext(AuthContext);
+  const {auth} = useContext(AuthContext);
   const ProtectedRoute = ({ children }) => {
     if (auth === false) {
       return <Navigate to="/login" />;
@@ -50,7 +50,7 @@ const App = () => {
       element: <TestPage/>,
     },
     {
-      path: "/deposite/:currency",
+      path: "/deposite",
       element: (
         <ProtectedRoute>
           <DepositePage />

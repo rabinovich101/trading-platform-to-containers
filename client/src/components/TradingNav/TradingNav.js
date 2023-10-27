@@ -5,7 +5,7 @@ import TradingNavRightAuth from "./TradingNavRightAuth/TradingNavRightAuth";
 
 
 
-function TradingNav({ auth }) {
+function TradingNav({auth}) {
  
   return (
     <div className="nav-warp">

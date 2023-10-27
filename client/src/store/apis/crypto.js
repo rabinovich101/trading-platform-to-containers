@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const { REACT_APP_LOCAL_3003 } = process.env;
+const {LOCALHOST_80} = process.env;
 const cryptoApi = createApi({
     reducerPath: 'crypto',
     baseQuery: fetchBaseQuery({
@@ -13,7 +13,7 @@ const cryptoApi = createApi({
                     return {
                         url: '/getBTCaddress',
                         method: "GET",
-                        headers: { Authorization: `Bearer ${obj.token}` }
+                        headers: { Authorization: `Bearer ${obj?.token}` }
                     }
                 }, providesTags: ['Crypto'],
             }),
@@ -22,13 +22,13 @@ const cryptoApi = createApi({
                     return {
                         url: '/getAddress',
                         method: "GET",
-                        headers: { Authorization: `Bearer ${obj.token}` },
-                        params: { currency: obj.currency, network: obj.network },
+                        headers: { Authorization: `Bearer ${obj?.token}` },
+                        params: { coin: obj?.coin, network: obj?.network },
                     }
                 }, providesTags: ['Crypto'],
             })
             
-        }
+        };
     }
 });
 

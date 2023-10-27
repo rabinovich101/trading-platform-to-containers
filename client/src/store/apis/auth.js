@@ -29,7 +29,7 @@ const authApi = createApi({
                     return {
                         url: '/',
                         method: 'GET',
-                        headers: { Authorization: `Bearer ${token}` }
+                        headers: {Authorization: `Bearer ${token}`}
                     }
                 },providesTags: ['Auth']
             })

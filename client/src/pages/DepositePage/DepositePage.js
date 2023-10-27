@@ -4,8 +4,6 @@ import BtcCoin from "../../components/depoisteCoins/BtcCoin/BtcCoin";
 import TradingNav from "../../components/TradingNav/TradingNav";
 import { useContext } from "react";
 import AuthContext from "../../context/authContext";
-import { useState } from "react";
-import { useEffect } from "react";
 import BnbCoin from "../../components/depoisteCoins/BnbCoin/BnbCoin";
 import Usdt from "../../components/depoisteCoins/Usdt/Usdt";
 import Busd from "../../components/depoisteCoins/Busd/Busd";
@@ -16,40 +14,35 @@ import Footer from "../../components/Footer/Footer";
 
 
 function DepositePage() {
-  const { auth } = useContext(AuthContext); 
-  const { currency } = useParams();
-  const [token, setToken] = useState(window.localStorage.getItem('user'));
+  const {auth} = useContext(AuthContext); 
+  const queryParameters = new URLSearchParams(window.location.search);
+  const coin = queryParameters.get("coin");
   const action = 'Deposite';
-  const renderCoin = (currency) => {
-    if (currency === 'BTC') {
-      return <BtcCoin currency={currency} token={token} />;
-    } else if (currency === 'BNB') {
-      return <BnbCoin currency={currency} token={token} />;
-    } else if (currency === 'LTC') {
-      return <BnbCoin currency={currency} token={token} />;
-    } else if (currency === 'USDT') {
-      return <Usdt currency={currency} token={token} />;
-    } else if (currency === 'BUSD') {
-      return <Busd currency={currency} token={token} />;
+
+  const renderCoin = (coin) => {
+    if (coin === 'BTC') {
+      return <BtcCoin coin={coin}/>;
+    } else if (coin === 'BNB') {
+      return <BnbCoin coin={coin} />;
+    } else if (coin === 'LTC') {
+      return <BnbCoin coin={coin} />;
+    } else if (coin === 'USDT') {
+      return <Usdt coin={coin} />;
+    } else if (coin === 'BUSD') {
+      return <Busd coin={coin} />;
     }
   };
-  
-
-  useEffect(() => {
-    setToken(window.localStorage.getItem('user'));
-  }, [token]);
-  
 
   return (
     <div className="deposite-page">
       <div className="deposite-page_tradingnav">
-        <TradingNav auth={auth} />
+        <TradingNav auth={auth}/>
       </div>
       <div className="deposite-page_subnav">
         <SubNav />
       </div >
       <div className="deposite-page_content">
-        {renderCoin(currency) ? renderCoin(currency) : <GoSync />}
+        {renderCoin(coin) ? renderCoin(coin) : <GoSync />}
       </div>
       <div className="deposite-page_history">
         <HistoryTable action={action} />

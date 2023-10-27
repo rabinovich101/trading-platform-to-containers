@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   client:
     container_name: client
@@ -32,6 +32,7 @@ services:
       - BLOCKCHAIR_KEY=A___FsYEEz0ZDQ64boro8fFUYllGitBt
       - PORT=3003
       - LOCALHOST_3010=http://localhost:3010
+      - LOCALHOST_80=http://localhost:80
   db:
     container_name: mysql
     image: mysql:8.0
@@ -55,6 +56,7 @@ services:
       - api
       - client
       - orderbook
+      - jsonserver
     restart: always
     build:
       dockerfile: Dockerfile.dev
@@ -71,17 +73,17 @@ services:
       - ./orderBook:/app
     expose:
       - 3010
-      - 3004
     restart: always
-  # jsonserver:
-  #   container_name: json_server
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./jsonServer
-  #   restart: always
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./jsonServer:/app
-  #   expose:
-  #     - 3004
+  jsonserver:
+    container_name: jsonserver
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./jsonServer
+    restart: always
+    volumes:
+      - /app/node_modules
+      - ./jsonServer:/app
+    expose:
+      - 3004
+
     

@@ -9,7 +9,7 @@ function AuthContextProvider({ children }) {
     const checkAuth = async (token) => {
         const res = await axios.post('api/v1/auth', {},{ headers: { Authorization: `Bearer ${token}` } });
         
-        res.data ? setAuth(true) : setAuth(false);
+        res?.data ? setAuth(true) : setAuth(false);
       };
     useEffect(() => {
         setToken(c => c = localStorage.getItem("user"));
@@ -17,11 +17,11 @@ function AuthContextProvider({ children }) {
     }, [token,auth]);
    
     return (
-        <AuthContext.Provider value={{auth, checkAuth, token}}>
+        <AuthContext.Provider value={{auth, checkAuth ,token}}>
             {children}
         </AuthContext.Provider>
     );
 }
-export { AuthContextProvider };
+export {AuthContextProvider};
 export default AuthContext;
 

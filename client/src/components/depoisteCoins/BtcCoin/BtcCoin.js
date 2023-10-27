@@ -1,17 +1,17 @@
 import "./BtcCoin.scss";
+import AuthContext from "../../../context/authContext";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { useState,useEffect } from "react";
+import { useState,useEffect, useContext } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { useGetAnyAddressQuery} from "../../../store";
 import { QRCodeSVG } from 'qrcode.react';
 
-function BtcCoin({ currency , token}) {
+
+function BtcCoin({ coin }) {
+  const {token, auth} = useContext(AuthContext); 
   const [copy, setCopy] = useState({ value: "", copied: false });
-  const [obj, setObj] = useState({ token, currency, network: "BTC" });
-
-  const { data, isLoading, isSuccess} = useGetAnyAddressQuery(obj);
-
-
+  const obj = {token, coin, network: "BTC"};
+  const {data, isLoading, isSuccess} = useGetAnyAddressQuery(obj);
 
   useEffect(() => {
     if (isSuccess) {
@@ -23,6 +23,7 @@ function BtcCoin({ currency , token}) {
   return (
     <div className="bitcoin-deposite">
       <h1 className="bitcoin-deposite-title">Welcome to Bitcoin Deposit Process</h1>
+        {console.log(obj.token , obj.coin, obj.network)}
         <ol className="bitcoin-deposite-steps">
           <li className="bitcoin-deposite-steps-1">Make Sure You Have Bitcoin Wallet With Amount Inside.</li>
           <li className="bitcoin-deposite-steps-2">Copy The Address Or Use The QrCode.</li>
@@ -30,7 +31,7 @@ function BtcCoin({ currency , token}) {
         </ol>
         <div className="coin-field">
           <div className="coin">COIN: </div>
-          <div className="coin-type">{currency}</div>
+          <div className="coin-type">{coin}</div>
       </div>
       <div className="network-field">
         <div className="network-name">NETWORK:</div>
@@ -46,7 +47,7 @@ function BtcCoin({ currency , token}) {
           </CopyToClipboard>
         </div>
       </div>
-      <QRCodeSVG size={200} bgColor="#F0B90B" value={ copy.value } includeMargin='true' level='H'/>
+      <QRCodeSVG size={200} bgColor="#F0B90B" value={copy.value} includeMargin='true' level='H'/>
     </div>
   );
 }

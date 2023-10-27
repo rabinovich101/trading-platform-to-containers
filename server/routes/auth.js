@@ -7,15 +7,15 @@ const { authenticateToken } = require("../functions/auth.js");
 
 // login route
 router.post("/login", (req,res) => { 
-    const { email, password } = req.body;
+    const {email , password} = req.body;
     try{
-        if (!email || !password || email === undefined || password === undefined) {
+        if (!email || !password || email === 'undefined' || password === 'undefined') {
             return res.status(403).json({"massage":"some thing wrong"});
         }
         let q = "SELECT * FROM users WHERE email=?";
         db.query(q, [email],function(error, results, fields){
             if(error) return res.status(403).json({"massage":"some thing wrong"});
-            if(password === results[0]?.password) {
+            if(password === results[0].password) {
                 const token = jwt.sign({"email":email, "id": results[0].uniqID, "indexID":results[0].Coin_Index}, process.env.SECRET_TOKEN, {expiresIn: '1d'});
                 return res.status(200).json({"token": token})
                 

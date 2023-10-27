@@ -145,7 +145,7 @@ router.post(`/transaction/limitbuy`, authenticateToken, checkBalance, async (req
         const side = 'BID';
         const { currency, sellAmount, price, sellCoin } = req.body;
         if (currency && sellAmount && price) {
-            const results = await axios.post(`orderbookengine/trade`, { ClientID: id, side, currency, quantity: sellAmount, price });
+            const results = await axios.post(`orderbook/trade`, { ClientID: id, side, currency, quantity: sellAmount, price });
             if (results.data) {
                 //this part is update the database about the buy order
                 let q = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price,CreatedAt)
@@ -172,7 +172,7 @@ router.post(`/transaction/limitsell`, authenticateToken, checkBalance, async (re
         const { currency, sellAmount, price, sellCoin } = req.body;
         if (currency && sellAmount && price) {
             let newCurrency = currency.split("/");
-            const results = await axios.post(`orderbookengine/trade`, { ClientID: id, side, currency, quantity: sellAmount, price });
+            const results = await axios.post(`orderbook/trade`, { ClientID: id, side, currency, quantity: sellAmount, price });
             if (results.data) {
                 //this part is update the database about the buy order
                 let q = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price,CreatedAt)

@@ -8,7 +8,7 @@ import { useByUserQuery } from "../../../store";
 
 function TradingNavRightAuth() {
   const token = window.localStorage.getItem('user');
-  const { data} = useByUserQuery(token);
+  const {data} = useByUserQuery(token);
   useEffect(() => {
     window.localStorage.getItem('user');
   }, [token])
@@ -17,7 +17,7 @@ function TradingNavRightAuth() {
     <ul className="main-navigation-right">
       <li><BsWallet2/><a className="" href="/assets">Wallet </a></li> 
       <li><FaRegUserCircle />
-        <Link className="link-user">{data !== undefined && data[0].email !== undefined && data[0].email}</Link>
+        <Link className="link-user">{data !== undefined && data[0]?.email !== undefined && data[0]?.email}</Link>
       </li>
       <li><img src={Ring} alt="ring"/></li>   
     </ul>

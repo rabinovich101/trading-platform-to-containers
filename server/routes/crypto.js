@@ -21,8 +21,7 @@ const pubKey = node.neutered().toBase58();
 
 //get address for deposite BTC segwite
 router.get('/getBTCaddress', authenticateToken, (req, res) => {
-    const { indexID } = req.user;
-    console.log(indexID); 
+    const { indexID } = req.user; 
     const path = `m/84'/0'/0'/0/${indexID}`;
     const child = node.derivePath(path);
     const { address } = btcLib.payments.p2wpkh({ pubkey: child.publicKey });
@@ -31,15 +30,15 @@ router.get('/getBTCaddress', authenticateToken, (req, res) => {
 
 //get address for evrey chain
 router.get('/getAddress', authenticateToken, async(req, res) => {
-    const { id } = req.user;
-    const { currency, network } = req.query;
+    const {id} = req.user;
+    const { coin, network } = req.query;
     //initial core wallet
     const core = await initWasm();
     const { HDWallet } = core;
     //waiting for define trust wallet currency 
-    const trustwallet = await toTrustWallet(currency);
+    const trustwallet = await toTrustWallet(coin);
     //if usdt or busd we define native chain address
-    const chain = currency === "USDT" && network === "ETH" ? "ETH" : currency === "BUSD" && network === "BNB" ? "BNB" : currency;
+    const chain = coin === "USDT" && network === "ETH" ? "ETH" : coin === "BUSD" && network === "BNB" ? "BNB" : coin;
     if (trustwallet) {
     db.query(`SELECT * FROM nemonics WHERE Client_ID = '${id}'`, (error, results, field) => {
         if (error) return res.status(200).json("error");
@@ -47,7 +46,7 @@ router.get('/getAddress', authenticateToken, async(req, res) => {
         if (results.length > 0) {
             const wallet = HDWallet.createWithMnemonic(results[0].Memonic , "")
             const address = wallet.getAddressForCoin(trustwallet);
-            return res.status(200).json({ address });
+            return res.status(200).json({address});
             
         } else {
             let wallet = HDWallet.create(128, "");
@@ -56,7 +55,7 @@ router.get('/getAddress', authenticateToken, async(req, res) => {
                 (error, results, field) => {
                     if (error) return res.status(200).json("error");
                     if (results) {
-                        return res.status(200).json({ address: wallet.getAddressForCoin(trustwallet)});
+                        return res.status(200).json({address: wallet.getAddressForCoin(trustwallet)});
                     }
                 });
             }
@@ -65,6 +64,5 @@ router.get('/getAddress', authenticateToken, async(req, res) => {
         return res.status(400).json("chain not exist");
     }
 });
-
 
 module.exports = router;
