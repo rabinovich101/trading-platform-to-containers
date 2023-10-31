@@ -71,7 +71,7 @@ const accountsApi = createApi({
                         url: `/transaction/sell`,
                         method: "POST",
                         body: input,
-                        headers: { Authorization: `Bearer ${input.token}` }
+                        headers: {Authorization: `Bearer ${input.token}`}
                     }
                 },
                 invalidatesTags: (result, error, arg) => result === 'done' ? [{ type: 'Accounts' }]
@@ -86,7 +86,7 @@ const accountsApi = createApi({
                         url: `/transaction/limitbuy`,
                         method: "POST",
                         body: input,
-                        headers: { Authorization: `Bearer ${input.token}` }
+                        headers: {Authorization: `Bearer ${input.token}`}
                     }
                 },
                 invalidatesTags: (result, error, arg) => result.ClientID ? [{ type: 'Accounts' }] && toast.success("Order Sends") : 
@@ -100,7 +100,7 @@ const accountsApi = createApi({
                         url: `/transaction/limitsell`,
                         method: "POST",
                         body: input,
-                        headers: { Authorization: `Bearer ${input.token}` }
+                        headers: {Authorization: `Bearer ${input.token}`}
                     }
                 },
                 invalidatesTags: (result, error, arg) => result.ClientID ? [{ type: 'Accounts' }] && toast.success("Order Sends") : 

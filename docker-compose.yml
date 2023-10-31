@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 services:
   client:
     container_name: client
@@ -11,6 +11,8 @@ services:
     restart: always
     environment:
       - WDS_SOCKET_PORT=0
+    networks:
+      - my-network
   api:
     container_name: api
     build: 
@@ -33,6 +35,8 @@ services:
       - PORT=3003
       - LOCALHOST_3010=http://localhost:3010
       - LOCALHOST_80=http://localhost:80
+    networks:
+      - my-network
   db:
     container_name: mysql
     image: mysql:8.0
@@ -44,25 +48,31 @@ services:
       - MYSQL_PASSWORD=Xx123456
     volumes:
       - ./tables.sql:/docker-entrypoint-initdb.d/0_init.sql
+    networks:
+      - my-network
   adminer:
     container_name: adminer
     image: adminer
     restart: always
     ports:
       - 8080:8080
+    networks:
+      - my-network
   nginx:
     container_name: nginx
-    depends_on:
-      - api
-      - client
-      - orderbook
-      - jsonserver
     restart: always
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
       - "3050:80"
+    depends_on:
+      - api
+      - orderbook
+      - client
+      - jsonserver
+    networks:
+      - my-network
   orderbook:
     container_name: orderbook
     build:
@@ -71,19 +81,27 @@ services:
     volumes:
       - /app/node_modules
       - ./orderBook:/app
-    expose:
-      - 3010
     restart: always
+    networks:
+      - my-network
   jsonserver:
     container_name: jsonserver
-    build:
+    image: clue/json-server
+    build: 
       dockerfile: Dockerfile.dev
       context: ./jsonServer
     restart: always
     volumes:
-      - /app/node_modules
-      - ./jsonServer:/app
-    expose:
-      - 3004
+      - ./jsonServer/db.json:/data/db.json
+    command: json-server --watch /data/db.json --port 3004 --host 0.0.0.0
+    ports:
+      - 3004:3004
+    networks:
+      - my-network 
+networks:
+  my-network:
+    driver: bridge
+  
+    
 
     

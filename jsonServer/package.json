@@ -1,10 +1,10 @@
 {
   "name": "jsonserver",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "db.json",
   "license": "MIT",
   "scripts": {
-    "start": "json-server --watch db.json --port 3004"
+    "start": "json-server --watch db.json --port 3004 --host 0.0.0.0"
   },
   "dependencies": {
     "json-server": "^0.17.1"

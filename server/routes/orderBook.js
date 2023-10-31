@@ -29,7 +29,7 @@ router.get('/tradesbyid', authenticateToken, async (req, res) => {
 // get final trades
 router.get('/trades', async (req, res) => {
     try {
-        const { relatedId, currency} = req.query;
+        const {relatedId, currency} = req.query;
         if (relatedId && currency) {
             const trades = await axios.get(`http://orderbook:3010/trades?ralatedid=${relatedId}&currency=${currency}`);
             return res.status(200).json(trades.data);
@@ -47,7 +47,7 @@ router.get('/trades', async (req, res) => {
 //get asks by currency
 router.get('/ask', async (req, res) => {
     try {
-        const { currency } = req.query;
+        const {currency} = req.query;
         if (currency) {
             const ask = await axios.get(`http://orderbook:3010/ask/${currency}`);
             if (ask.data) {
@@ -66,7 +66,7 @@ router.get('/ask', async (req, res) => {
 //get bids by currency
 router.get('/bid', async (req, res) => {
     try {
-        const { currency } = req.query;
+        const {currency} = req.query;
         if (currency) {
             const bid = await axios.get(`http://orderbook:3010/bid/${currency}`);
             if (bid.data) {
@@ -85,7 +85,7 @@ router.get('/bid', async (req, res) => {
 //get active orders by id
 router.get(`/transaction`, authenticateToken, async (req, res) => {
     try {
-        const { id } = req.user;
+        const {id} = req.user;
         const orders = await axios.get(`http://orderbook:3010/transaction/${id}`,{});
         const results = orders.data;
         if (results) {
@@ -103,9 +103,9 @@ router.get(`/transaction`, authenticateToken, async (req, res) => {
 router.post('/cancel', authenticateToken, async (req, res) => {
     try {
         const ClientID = req.user.id;
-        const { id } = req.body;
+        const {id} = req.body;
         if (ClientID && id) {
-            const result = await axios.post(`http://orderbook:3010/cancel`, { ClientID :ClientID, id: id });
+            const result = await axios.post(`http://orderbook:3010/cancel`, {ClientID :ClientID, id: id});
             const request = result.data;
             if (request) {
                 return res.status(200).json(request);
@@ -117,7 +117,7 @@ router.post('/cancel', authenticateToken, async (req, res) => {
             return res.status(400).json("one of arguments is missing");
         }
     } catch (error) {
-        
+        return res.status(400).json(error);
     }
 })
 

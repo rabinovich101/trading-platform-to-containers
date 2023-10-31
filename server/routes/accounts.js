@@ -53,88 +53,104 @@ router.get('/balances', authenticateToken, (req, res) => {
 
 //this route is return the balance for specipic coin
 router.get('/:currency', authenticateToken, (req, res) => {
-    const { currency } = req.params;
-    const { id } = req.user;
+    try {
+        const { currency } = req.params;
+        const { id } = req.user;
+    
+        let q =  `select balance('${id}', '${currency.toLocaleUpperCase()}') as balance`;
+        db.query(q, function (error, results, fields) {
+            if (error) return res.status(400).json('bad request');
+            const balance = results[0].balance;
+            return res.status(200).json([balance]);
+        });
+        return;
+    } catch (error) {
+        return res.status(500).json(error);
+    }
 
-    let q =  `select balance('${id}', '${currency.toLocaleUpperCase()}') as balance`;
-    db.query(q, function (error, results, fields) {
-        if (error) return res.status(400).json('bad request');
-        const balance = results[0].balance;
-        return res.status(200).json([balance]);
-    });
-    return;
 });
 
 router.get('/avbalance/:currency', authenticateToken, (req, res) => {
-    const { currency } = req.params;
-    const { id } = req.user;
-    let q = `select available('${id}', '${currency.toLocaleUpperCase()}') as avl`;
-    db.query(q, function (error, results, fields) {
-        if (error) return res.status(400).json('bad request');
-        const avl = results[0].avl;
-        return res.status(200).json([avl]);
-    });
+    try {
+        const { currency } = req.params;
+        const { id } = req.user;
+        let q = `select available('${id}', '${currency.toLocaleUpperCase()}') as avl`;
+        db.query(q, function (error, results, fields) {
+            if (error) return res.status(400).json('bad request');
+            const avl = results[0].avl;
+            return res.status(200).json([avl]);
+        });
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+
 });
 
 //buy route for market order
-router.post(`/transaction/buy`, authenticateToken ,checkBalance ,async (req, res) => {
-    const { id } = req.user;
-    const { buyCoin, sellCoin, amount } = req.body;
-    const orderid = Math.floor(Math.random() * 100000000).toString();
-    let price = await getPrice(buyCoin, sellCoin);
-    const amountToFloat = parseFloat(amount);
-    const newAmount = amountToFloat / price;
-    //for understanding porpuses i wrote to sparated filled for more clearty
-    let qbuyCoin = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price,CreatedAt) 
-    VALUES ('${id}', '${orderid}', 'buy', '${buyCoin}','${newAmount}','${price}',now())`;
-    let qsellCoin = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price, CreatedAt) 
-    VALUES ('${id}', '${orderid}', 'sell', '${sellCoin}','${amount}','${price}',now())`;
-    let q = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price,CreatedAt) 
-    VALUES ('${id}', '${orderid}', 'buy', '${buyCoin}','${newAmount}','${price}',now());INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price, CreatedAt) 
-    VALUES ('${id}', '${orderid}', 'sell', '${sellCoin}','${amountToFloat}','${price}',now())`
-    const results = await query(qbuyCoin);
-    if (results) {
-        await query(qsellCoin).then(e => {
-            if (e) {
-                return res.status(200).json('done');
-            } else {
-                return res.status(400).json('Bad Request');
-            }
-            
-        });
-    } else {
-        return res.status(400).json('Bad Request');
+router.post(`/transaction/buy`, authenticateToken, checkBalance, async (req, res) => {
+    try {
+        const {id} = req.user;
+        const {buyCoin, sellCoin, amount} = req.body;
+        const orderid = Math.floor(Math.random() * 100000000).toString();
+        let price = await getPrice(buyCoin, sellCoin);
+        const amountToFloat = parseFloat(amount);
+        const newAmount = amountToFloat / price;
+        //for understanding porpuses i wrote to sparated filled for more clearty
+        let qbuyCoin = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price,CreatedAt) 
+        VALUES ('${id}', '${orderid}', 'buy', '${buyCoin}','${newAmount}','${price}',now())`;
+        let qsellCoin = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price, CreatedAt) 
+        VALUES ('${id}', '${orderid}', 'sell', '${sellCoin}','${amount}','${price}',now())`;
+        let q = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price,CreatedAt) 
+        VALUES ('${id}', '${orderid}', 'buy', '${buyCoin}','${newAmount}','${price}',now());INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price, CreatedAt) 
+        VALUES ('${id}', '${orderid}', 'sell', '${sellCoin}','${amountToFloat}','${price}',now())`
+        const results = await query(qbuyCoin);
+        if (results) {
+            await query(qsellCoin).then(e => {
+                if (e) {
+                    return res.status(200).json('done');
+                } else {
+                    return res.status(400).json('Bad Request');
+                }
+            });
+        } else {
+            return res.status(400).json('Bad Request');
+        }
+    } catch (error) {
+        return res.status(500).json(error);
     }
-
 });
 
 //sell route for market order
-router.post(`/transaction/sell`,authenticateToken , checkBalance , async (req, res) => {
-    const { id } = req.user;
-    const { buyCoin, sellCoin, amount } = req.body;
-    const orderid = Math.floor(Math.random() * 100000000).toString();
-    let price = await getPrice(sellCoin, buyCoin);
-    const amountToFloat = parseFloat(amount);
-    const newAmount = amountToFloat * price;
-    //for understanding porpuses i wrote to sparated filled for more clearty
-    let qbuyCoin = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price, CreatedAt) 
-    VALUES ('${id}', '${orderid}', 'buy', '${buyCoin}','${newAmount}','${price}',now())`;
-    let qsellCoin = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price, CreatedAt) 
-    VALUES ('${id}', '${orderid}', 'sell', '${sellCoin}','${amountToFloat}','${price}',now())`;
-
-    const results = await query(qsellCoin);
-    if (results) {
-        await query(qbuyCoin).then(e => {
-            if (e) {
-                return res.status(200).json('done');
-            } else {
-                return res.status(400).json('Bad Request');
-            }
-            
-        });
-    } else {
-        return res.status(400).json('Bad Request');
+router.post(`/transaction/sell`, authenticateToken, checkBalance, async (req, res) => {
+    try {
+        const { id } = req.user;
+        const { buyCoin, sellCoin, amount } = req.body;
+        const orderid = Math.floor(Math.random() * 100000000).toString();
+        let price = await getPrice(sellCoin, buyCoin);
+        const amountToFloat = parseFloat(amount);
+        const newAmount = amountToFloat * price;
+        //for understanding porpuses i wrote to sparated filled for more clearty
+        let qbuyCoin = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price, CreatedAt) 
+        VALUES ('${id}', '${orderid}', 'buy', '${buyCoin}','${newAmount}','${price}',now())`;
+        let qsellCoin = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price, CreatedAt) 
+        VALUES ('${id}', '${orderid}', 'sell', '${sellCoin}','${amountToFloat}','${price}',now())`;
+    
+        const results = await query(qsellCoin);
+        if (results) {
+            await query(qbuyCoin).then(e => {
+                if (e) {
+                    return res.status(200).json('done');
+                } else {
+                    return res.status(400).json('Bad Request');
+                }
+            });
+        } else {
+            return res.status(400).json('Bad Request');
+        }
+    } catch (error) {
+        return res.status(500).json(error);
     }
+
 });
 
 // porpus of this route is to send buy order to json server and update dataBase
@@ -145,7 +161,7 @@ router.post(`/transaction/limitbuy`, authenticateToken, checkBalance, async (req
         const side = 'BID';
         const { currency, sellAmount, price, sellCoin } = req.body;
         if (currency && sellAmount && price) {
-            const results = await axios.post(`orderbook/trade`, { ClientID: id, side, currency, quantity: sellAmount, price });
+            const results = await axios.post(`http://orderbook:3010/trade`, {ClientID: id, side, currency, quantity: sellAmount, price});
             if (results.data) {
                 //this part is update the database about the buy order
                 let q = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price,CreatedAt)
@@ -172,7 +188,7 @@ router.post(`/transaction/limitsell`, authenticateToken, checkBalance, async (re
         const { currency, sellAmount, price, sellCoin } = req.body;
         if (currency && sellAmount && price) {
             let newCurrency = currency.split("/");
-            const results = await axios.post(`orderbook/trade`, { ClientID: id, side, currency, quantity: sellAmount, price });
+            const results = await axios.post(`http://orderbook:3010/trade`, { ClientID: id, side, currency, quantity: sellAmount, price });
             if (results.data) {
                 //this part is update the database about the buy order
                 let q = `INSERT INTO orders (Client_ID, Order_id, Order_Type, Currency, Amount, Price,CreatedAt)

@@ -12,7 +12,7 @@ function LimitComp({chart ,stableCoin, cryptoCoin}) {
     const [getBalance1, setGetBalance1] = useState({ token: window.localStorage.getItem('user'), currency: cryptoCoin, });
     const [getBalance2, setGetBalance2] = useState({ token: window.localStorage.getItem('user'), currency: stableCoin, });
     const dataCoin = useMemo(() => coinsPricesApiS1, [coinsPricesApiS1]);
-    const [buyOrder] = useBuyOrderLimitMutation();
+    const [buyOrder, result] = useBuyOrderLimitMutation();
     const [sellOrder] = useSellOrderLimitMutation();
     // Get account balance
     const { data: crypto, isLoading: cryptoLoding ,isSuccess:cryptoSuccess, isError:cryptoError} = useGetAvlQuery(getBalance1, {pollingInterval: 300,refetchOnMountOrArgChange: true ,skip:false});
@@ -70,6 +70,7 @@ function LimitComp({chart ,stableCoin, cryptoCoin}) {
     return (
         <>
             <form className="trading-controller-buy" onSubmit={e => buySubmit(e)}>
+                {console.log(result)}
                 <div className="trading-controller-buy-balance">{`Avbl ${renderBalance(stable,stableLoding,stableSuccess, stableError)} ${stableCoin.toUpperCase()}`}</div>
                 <div className="trading-controller-buy-price">
                     <label className="limitcamp-label">Price</label>
