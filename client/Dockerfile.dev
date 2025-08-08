@@ -1,4 +1,5 @@
-FROM node:16-alpine
+FROM node:20-alpine
+RUN apk add --no-cache python3 make g++ py3-pip
 WORKDIR "/app"
 COPY ./package*.json ./
 RUN yarn
